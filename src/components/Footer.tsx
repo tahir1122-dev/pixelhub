@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
     FaFacebookF,
@@ -103,19 +104,19 @@ const Footer: React.FC = () => {
                             <h5 className="text-primary mb-3">Quick Links</h5>
                             <ul className="list-unstyled">
                                 <li className="mb-2">
-                                    <a href="/" className="text-light text-decoration-none">Home</a>
+                                    <Link to="/" className="text-light text-decoration-none">Home</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <a href="/about" className="text-light text-decoration-none">About Us</a>
+                                    <Link to="/about" className="text-light text-decoration-none">About Us</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <a href="/portfolio" className="text-light text-decoration-none">Portfolio</a>
+                                    <Link to="/portfolio" className="text-light text-decoration-none">Portfolio</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <a href="/testimonials" className="text-light text-decoration-none">Testimonials</a>
+                                    <Link to="/testimonials" className="text-light text-decoration-none">Testimonials</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <a href="/contact" className="text-light text-decoration-none">Contact</a>
+                                    <Link to="/contact" className="text-light text-decoration-none">Contact</Link>
                                 </li>
                             </ul>
                         </motion.div>

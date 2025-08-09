@@ -49,13 +49,50 @@ body::before {
   content: '';
   position: fixed;
   top: 0;
+
+  /* Responsive Navbar Logo */
+  .navbar-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+  }
+
+  /* Mobile responsive breakpoints */
+  @media (max-width: 992px) {
+    .navbar-logo {
+      height: 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar-logo {
+      height: 45px;
+    }
+
+    .navbar-brand {
+      padding: 0.25rem 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .navbar-logo {
+      height: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navbar-logo {
+      height: 35px;
+    }
+  }
+
   left: 0;
   width: 100%;
   height: 100%;
-  background-image:
-    radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+  background-image: radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+  radial-gradient(circle at 75% 75%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+  radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
   animation: particleFloat 20s ease-in-out infinite;
   z-index: -1;
   pointer-events: none;

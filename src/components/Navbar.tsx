@@ -49,8 +49,9 @@ const Navbar: React.FC = () => {
                         <img
                             src="/images/logo.png"
                             alt="PixelHub Logo"
+                            className="navbar-logo"
                             style={{
-                                height: '150px',
+                                height: '60px',
                                 width: 'auto',
                                 objectFit: 'contain',
                                 transition: 'all 0.3s ease'
