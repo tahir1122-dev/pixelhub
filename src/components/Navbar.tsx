@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
-    const [expanded, setExpanded] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
@@ -27,10 +26,6 @@ const Navbar: React.FC = () => {
         { name: 'Contact', path: '/contact' },
     ];
 
-    const handleNavClick = () => {
-        setExpanded(false);
-    };
-
     return (
         <motion.div
             initial={{ y: -100 }}
@@ -40,8 +35,6 @@ const Navbar: React.FC = () => {
             <BSNavbar
                 expand="lg"
                 fixed="top"
-                expanded={expanded}
-                onToggle={setExpanded}
                 className={`py-3 transition-all duration-300 ${scrolled
                     ? 'bg-dark bg-opacity-95 backdrop-blur'
                     : 'bg-transparent'
@@ -52,9 +45,17 @@ const Navbar: React.FC = () => {
                 }}
             >
                 <Container>
-                    <BSNavbar.Brand as={Link} to="/" className="fw-bold fs-2" onClick={handleNavClick}>
-                        <span className="text-primary">Pixel</span>
-                        <span className="text-secondary">Hub</span>
+                    <BSNavbar.Brand as={Link} to="/" className="d-flex align-items-center">
+                        <img
+                            src="/images/logo.png"
+                            alt="PixelHub Logo"
+                            style={{
+                                height: '150px',
+                                width: 'auto',
+                                objectFit: 'contain',
+                                transition: 'all 0.3s ease'
+                            }}
+                        />
                     </BSNavbar.Brand>
 
                     <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
@@ -66,8 +67,7 @@ const Navbar: React.FC = () => {
                                     <Nav.Link
                                         as={Link}
                                         to={item.path}
-                                        onClick={handleNavClick}
-                                        className={`mx-lg-2 fw-medium text-center ${location.pathname === item.path ? 'active' : ''
+                                        className={`mx-2 fw-medium ${location.pathname === item.path ? 'active' : ''
                                             }`}
                                     >
                                         {item.name}

@@ -8,6 +8,9 @@ import {
     FaHeart,
     FaReact,
     FaNodeJs,
+    FaJs,
+    FaHtml5,
+    FaCss3Alt,
     FaBootstrap,
     FaGitAlt,
     FaFigma
@@ -16,9 +19,12 @@ import {
     SiTypescript,
     SiMongodb,
     SiNextdotjs,
+    SiTailwindcss,
     SiFramer,
     SiShopify
-} from 'react-icons/si'; const About: React.FC = () => {
+} from 'react-icons/si';
+
+const About: React.FC = () => {
     const values = [
         {
             icon: FaRocket,
@@ -44,9 +50,11 @@ import {
 
     const team = [
         {
-            name: 'Sheikh Hamza ',
-            role: 'HR EXECUTIVE',
-            image: '/ceo 1.jpg',
+            name: 'Umara Munir  ',
+
+            role: 'Co Founder & CEO',
+
+            image: '/ceo 2.jpg',
             description: 'Visionary leader and digital strategist with expertise in modern web technologies and business development.',
             techStack: [
                 { icon: FaReact, name: 'React' },
@@ -58,9 +66,10 @@ import {
             ]
         },
         {
-            name: 'Umara Munir',
-            role: 'Co Founder & CEO',
-            image: '/ceo 2.jpg',
+            name: 'Sheikh Hamza',
+            role: 'HR EXECUTIVE',
+
+            image: '/ceo1.jpg',
             description: 'Strategic operations leader focused on team development and organizational excellence.',
             techStack: [
                 { icon: FaUsers, name: 'Leadership' },
@@ -85,6 +94,7 @@ import {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}
                             >
+                                <img src="/images/logo.png" alt="PixelHub Logo" style={{ height: '50px', width: '50px', objectFit: 'contain', marginBottom: '16px' }} />
                                 <h1 className="display-3 fw-bold mb-4">
                                     About <span className="text-primary">Pixel</span>
                                     <span className="text-secondary">Hub</span>
@@ -189,6 +199,7 @@ import {
                                                 width: '150px',
                                                 height: '150px',
                                                 objectFit: 'cover',
+                                                objectPosition: 'center top',
                                                 border: '3px solid var(--primary-color)'
                                             }}
                                             whileHover={{ scale: 1.1 }}

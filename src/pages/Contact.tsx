@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import {
     FaEnvelope,
     FaPhone,
@@ -45,40 +45,39 @@ const Contact: React.FC = () => {
         setIsLoading(true);
 
         try {
-            // EmailJS configuration for sending emails to pixelhub714@gmail.com
-            // const templateParams = {
-            //     from_name: formData.name,
-            //     from_email: formData.email,
-            //     subject: formData.subject || 'New Contact Form Submission',
-            //     message: formData.message,
-            //     to_email: 'pixelhub714@gmail.com',
-            //     to_name: 'PixelHub Team',
-            // };
+            // EmailJS configuration
+            // Initialize EmailJS with your public key
+            emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your actual public key
 
-            // For now, we'll simulate the email sending
-            // To actually send emails, you need to:
-            // 1. Create an EmailJS account at https://www.emailjs.com/
-            // 2. Set up your email service (Gmail, Outlook, etc.)
-            // 3. Create a template
-            // 4. Replace the placeholder values below with your actual EmailJS credentials
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                subject: formData.subject || 'New Contact Form Submission',
+                message: formData.message,
+                to_email: 'pixelhub714@gmail.com',
+                to_name: 'PixelHub Team',
+            };
 
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            // Uncomment and configure when you have EmailJS credentials:
-            // import emailjs from '@emailjs/browser';
-            // emailjs.init('YOUR_PUBLIC_KEY');
-            // await emailjs.send(
-            //   'YOUR_SERVICE_ID',
-            //   'YOUR_TEMPLATE_ID',
-            //   templateParams,
-            //   'YOUR_PUBLIC_KEY'
-            // );
+            // Send email using EmailJS
+            await emailjs.send(
+                'YOUR_SERVICE_ID',      // Replace with your service ID
+                'YOUR_TEMPLATE_ID',     // Replace with your template ID
+                templateParams,
+                'YOUR_PUBLIC_KEY'       // Replace with your public key
+            );
 
             toast.success('Message sent successfully! We\'ll get back to you soon.');
             setFormData({ name: '', email: '', subject: '', message: '' });
         } catch (error) {
             console.error('Email sending failed:', error);
-            toast.error('Failed to send message. Please try again or contact us directly.');
+
+            // For demo purposes, show success even if EmailJS isn't configured
+            if (error instanceof Error && error.message.includes('YOUR_')) {
+                toast.success('Demo: Message would be sent successfully! (Configure EmailJS for actual sending)');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+            } else {
+                toast.error('Failed to send message. Please try again or contact us directly.');
+            }
         } finally {
             setIsLoading(false);
         }

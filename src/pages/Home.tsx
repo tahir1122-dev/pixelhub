@@ -11,12 +11,11 @@ const Home: React.FC = () => {
             <section className="hero-section position-relative overflow-hidden" style={{ paddingTop: '120px', minHeight: '100vh' }}>
                 <Container className="h-100">
                     <Row className="align-items-center min-vh-100">
-                        <Col lg={6} className="order-2 order-lg-1">
+                        <Col lg={6}>
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}
-                                className="text-center text-lg-start"
                             >
                                 <h1 className="display-2 fw-bold mb-4">
                                     Transform Your
@@ -27,7 +26,7 @@ const Home: React.FC = () => {
                                     We create stunning websites, powerful e-commerce solutions, and effective
                                     digital marketing strategies that drive results and grow your business.
                                 </p>
-                                <div className="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+                                <div className="d-flex gap-3 flex-wrap">
                                     <motion.div
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
@@ -47,14 +46,14 @@ const Home: React.FC = () => {
                                 </div>
                             </motion.div>
                         </Col>
-                        <Col lg={6} className="order-1 order-lg-2 mb-4 mb-lg-0">
+                        <Col lg={6}>
                             <motion.div
                                 className="text-center"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
-                                <div className="hero-visual position-relative d-flex justify-content-center">
+                                <div className="hero-visual position-relative">
                                     <motion.div
                                         className="hero-circle"
                                         animate={{ rotate: 360 }}
@@ -64,6 +63,7 @@ const Home: React.FC = () => {
                                             height: '400px',
                                             border: '2px solid rgba(255, 215, 0, 0.3)',
                                             borderRadius: '50%',
+                                            margin: '0 auto',
                                             position: 'relative',
                                         }}
                                     >
@@ -92,15 +92,15 @@ const Home: React.FC = () => {
                                             <FaRocket size={40} className="text-primary" />
                                         </motion.div>
                                     </motion.div>
+                                    <motion.div
+                                        className="text-center mt-4"
+                                        animate={{ scale: [1, 1.1, 1] }}
+                                        transition={{ duration: 2, repeat: Infinity }}
+                                    >
+                                        <h3 className="text-primary fw-bold">Digital Excellence</h3>
+                                        <p className="text-light">Crafted with Precision</p>
+                                    </motion.div>
                                 </div>
-                                <motion.div
-                                    className="text-center mt-4"
-                                    animate={{ scale: [1, 1.1, 1] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                >
-                                    <h3 className="text-primary fw-bold">Digital Excellence</h3>
-                                    <p className="text-light">Crafted with Precision</p>
-                                </motion.div>
                             </motion.div>
                         </Col>
                     </Row>
@@ -149,28 +149,29 @@ const Home: React.FC = () => {
                             { number: '24/7', label: 'Support Available' },
                             { number: '5+', label: 'Years Experience' },
                         ].map((stat, index) => (
-                            <Col lg={3} md={6} sm={6} xs={6} key={index} className="mb-3 mb-lg-0">
+                            <Col md={3} key={index} className="mb-3">
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className="stats-item"
                                 >
-                                    <h2 className="text-primary fw-bold display-4 stats-number">{stat.number}</h2>
-                                    <p className="text-light mb-0">{stat.label}</p>
+                                    <h2 className="text-primary fw-bold display-4">{stat.number}</h2>
+                                    <p className="text-light">{stat.label}</p>
                                 </motion.div>
                             </Col>
                         ))}
                     </Row>
                 </Container>
-            </section>            {/* Featured Services Preview */}
+            </section>
+
+            {/* Featured Services Preview */}
             <section className="section">
                 <Container>
                     <div className="section-title">
                         <h2>Our Expertise</h2>
                         <p>Delivering cutting-edge digital solutions that drive growth and success</p>
                     </div>
-                    <Row className="justify-content-center">
+                    <Row>
                         {[
                             {
                                 icon: '🌐',
@@ -188,16 +189,16 @@ const Home: React.FC = () => {
                                 description: 'Strategic campaigns that amplify your brand and reach.',
                             },
                         ].map((service, index) => (
-                            <Col lg={4} md={6} sm={12} key={index} className="mb-4">
+                            <Col md={4} key={index} className="mb-4">
                                 <motion.div
-                                    className="card h-100 hover-glow service-card"
+                                    className="card h-100 hover-glow"
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     whileHover={{ y: -10 }}
                                 >
                                     <div className="card-body text-center">
-                                        <div className="mb-3 service-icon" style={{ fontSize: '3rem' }}>
+                                        <div className="mb-3" style={{ fontSize: '3rem' }}>
                                             {service.icon}
                                         </div>
                                         <h4 className="text-primary mb-3">{service.title}</h4>

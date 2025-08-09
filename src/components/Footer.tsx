@@ -3,12 +3,16 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import {
     FaFacebookF,
+    FaTwitter,
     FaInstagram,
     FaLinkedinIn,
+    FaYoutube,
     FaEnvelope,
     FaPhone,
     FaMapMarkerAlt
-} from 'react-icons/fa'; const Footer: React.FC = () => {
+} from 'react-icons/fa';
+
+const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
@@ -36,10 +40,10 @@ import {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h3 className="mb-3">
-                                <span className="text-primary">Pixel</span>
-                                <span className="text-secondary">Hub</span>
-                            </h3>
+                            <div className="d-flex align-items-center mb-3 gap-2">
+                                <img src="/images/logo.png" alt="PixelHub Logo" style={{ height: '150px', width: '150px', objectFit: 'contain' }} />
+
+                            </div>
                             <p className="mb-4">
                                 Your trusted partner for digital solutions. We create stunning websites,
                                 powerful e-commerce platforms, and effective marketing strategies to
