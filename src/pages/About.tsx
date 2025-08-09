@@ -8,9 +8,6 @@ import {
     FaHeart,
     FaReact,
     FaNodeJs,
-    FaJs,
-    FaHtml5,
-    FaCss3Alt,
     FaBootstrap,
     FaGitAlt,
     FaFigma
@@ -19,7 +16,6 @@ import {
     SiTypescript,
     SiMongodb,
     SiNextdotjs,
-    SiTailwindcss,
     SiFramer,
     SiShopify
 } from 'react-icons/si';
