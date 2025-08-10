@@ -2,9 +2,19 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaRocket, FaCode, FaPalette } from 'react-icons/fa';
+import { FaArrowRight, FaRocket, FaCode, FaPalette, FaCheckCircle } from 'react-icons/fa';
 
 const Home: React.FC = () => {
+    const courses = [
+        { title: 'Graphic Design', icon: '🎨', description: 'Learn professional design skills with Adobe Creative Suite' },
+        { title: 'Video Editing', icon: '🎬', description: 'Master video editing with industry-standard tools' },
+        { title: 'MS Office', icon: '💻', description: 'Excel in Word, Excel, PowerPoint & more' },
+        { title: 'YouTube Automation', icon: '🤖', description: 'Automate and monetize your YouTube channel' },
+        { title: 'Website Development', icon: '🌐', description: 'Build modern websites with latest technologies' },
+        { title: 'SEO', icon: '📈', description: 'Master search engine optimization techniques' },
+        { title: 'Spoken English', icon: '🗣️', description: 'Improve your English communication skills' },
+    ];
+
     return (
         <>
             {/* Hero Section */}
@@ -213,6 +223,59 @@ const Home: React.FC = () => {
                             View All Services
                         </Link>
                     </div>
+                </Container>
+            </section>
+
+            {/* Courses Section */}
+            <section id="courses" className="section bg-dark">
+                <Container>
+                    <div className="section-title text-center">
+                        <h2>Our <span className="text-primary">Courses</span></h2>
+                        <p>Learn in-demand digital skills from industry experts and advance your career</p>
+                    </div>
+                    <Row>
+                        {courses.map((course, index) => (
+                            <Col lg={4} md={6} key={index} className="mb-4">
+                                <motion.div
+                                    className="card h-100 border-0 overflow-hidden service-card"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    whileHover={{ y: -10, scale: 1.02 }}
+                                    style={{
+                                        background: 'rgba(255, 255, 255, 0.05)',
+                                        backdropFilter: 'blur(10px)',
+                                        border: '1px solid rgba(255, 215, 0, 0.2)',
+                                    }}
+                                >
+                                    <div className="card-body text-center p-4">
+                                        <div className="mb-3" style={{ fontSize: '4rem' }}>
+                                            {course.icon}
+                                        </div>
+                                        <h4 className="text-primary mb-3">{course.title}</h4>
+                                        <p className="text-light mb-4">{course.description}</p>
+                                        <div className="mb-4">
+                                            <div className="d-flex align-items-center justify-content-center mb-2">
+                                                <FaCheckCircle className="text-primary me-2" />
+                                                <span className="text-light">Expert Instructors</span>
+                                            </div>
+                                            <div className="d-flex align-items-center justify-content-center mb-2">
+                                                <FaCheckCircle className="text-primary me-2" />
+                                                <span className="text-light">Hands-on Projects</span>
+                                            </div>
+                                            <div className="d-flex align-items-center justify-content-center">
+                                                <FaCheckCircle className="text-primary me-2" />
+                                                <span className="text-light">Certificate of Completion</span>
+                                            </div>
+                                        </div>
+                                        <Link to="/contact" className="btn btn-outline-primary">
+                                            Enroll Now <FaArrowRight className="ms-2" />
+                                        </Link>
+                                    </div>
+                                </motion.div>
+                            </Col>
+                        ))}
+                    </Row>
                 </Container>
             </section>
         </>

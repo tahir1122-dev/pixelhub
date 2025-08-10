@@ -9,7 +9,6 @@ import {
     FaReact,
     FaNodeJs,
     FaBootstrap,
-    FaGitAlt,
     FaFigma
 } from 'react-icons/fa';
 import {
@@ -53,12 +52,12 @@ const About: React.FC = () => {
             image: '/ceo 2.jpg',
             description: 'Visionary leader and digital strategist with expertise in modern web technologies and business development.',
             techStack: [
-                { icon: FaReact, name: 'React' },
-                { icon: SiNextdotjs, name: 'Next.js' },
-                { icon: SiTypescript, name: 'TypeScript' },
-                { icon: FaNodeJs, name: 'Node.js' },
-                { icon: SiMongodb, name: 'MongoDB' },
-                { icon: FaGitAlt, name: 'Git' }
+                { icon: FaUsers, name: 'Leadership' },
+                { icon: FaHeart, name: 'Team Building' },
+                { icon: FaRocket, name: 'Growth' },
+                { icon: FaLightbulb, name: 'Innovation' },
+                { icon: SiFramer, name: 'Process' },
+                { icon: FaBootstrap, name: 'Systems' }
             ]
         },
         {
@@ -68,11 +67,11 @@ const About: React.FC = () => {
             image: '/ceo1.jpg',
             description: 'Strategic operations leader focused on team development and organizational excellence.',
             techStack: [
-                { icon: FaUsers, name: 'Leadership' },
+                
                 { icon: FaHeart, name: 'Team Building' },
-                { icon: FaRocket, name: 'Growth' },
+           
                 { icon: FaLightbulb, name: 'Innovation' },
-                { icon: SiFramer, name: 'Process' },
+                
                 { icon: FaBootstrap, name: 'Systems' }
             ]
         },

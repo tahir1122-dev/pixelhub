@@ -14,6 +14,11 @@ import {
 const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
 
+    const handleLinkClick = () => {
+        // Scroll to top when clicking footer links
+        window.scrollTo(0, 0);
+    };
+
     const socialLinks = [
         { icon: FaFacebookF, href: 'https://www.facebook.com/share/1D28Af5JoV/', color: '#1877f2' },
         { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/pixel-hub-541331369?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', color: '#0077b5' },
@@ -86,16 +91,49 @@ const Footer: React.FC = () => {
                             <ul className="list-unstyled">
                                 {services.map((service, index) => (
                                     <li key={index} className="mb-2">
-                                        <a href="#" className="text-light text-decoration-none">
+                                        <Link to="/services" className="text-light text-decoration-none">
                                             {service}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
                         </motion.div>
                     </Col>
 
-                    <Col lg={3} md={6} className="mb-4">
+                    <Col lg={2} md={6} className="mb-4">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.15 }}
+                        >
+                            <h5 className="text-primary mb-3">Courses</h5>
+                            <ul className="list-unstyled">
+                                <li className="mb-2">
+                                    <a href="#courses" className="text-light text-decoration-none">Graphic Design</a>
+                                </li>
+                                <li className="mb-2">
+                                    <a href="#courses" className="text-light text-decoration-none">Video Editing</a>
+                                </li>
+                                <li className="mb-2">
+                                    <a href="#courses" className="text-light text-decoration-none">MS Office</a>
+                                </li>
+                                <li className="mb-2">
+                                    <a href="#courses" className="text-light text-decoration-none">YouTube Automation</a>
+                                </li>
+                                <li className="mb-2">
+                                    <a href="#courses" className="text-light text-decoration-none">Website Development</a>
+                                </li>
+                                <li className="mb-2">
+                                    <a href="#courses" className="text-light text-decoration-none">SEO</a>
+                                </li>
+                                <li className="mb-2">
+                                    <a href="#courses" className="text-light text-decoration-none">Spoken English</a>
+                                </li>
+                            </ul>
+                        </motion.div>
+                    </Col>
+
+                    <Col lg={2} md={6} className="mb-4">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -104,19 +142,19 @@ const Footer: React.FC = () => {
                             <h5 className="text-primary mb-3">Quick Links</h5>
                             <ul className="list-unstyled">
                                 <li className="mb-2">
-                                    <Link to="/" className="text-light text-decoration-none">Home</Link>
+                                    <Link to="/" className="text-light text-decoration-none" onClick={handleLinkClick}>Home</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <Link to="/about" className="text-light text-decoration-none">About Us</Link>
+                                    <Link to="/about" className="text-light text-decoration-none" onClick={handleLinkClick}>About Us</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <Link to="/portfolio" className="text-light text-decoration-none">Portfolio</Link>
+                                    <Link to="/portfolio" className="text-light text-decoration-none" onClick={handleLinkClick}>Portfolio</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <Link to="/testimonials" className="text-light text-decoration-none">Testimonials</Link>
+                                    <Link to="/testimonials" className="text-light text-decoration-none" onClick={handleLinkClick}>Testimonials</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <Link to="/contact" className="text-light text-decoration-none">Contact</Link>
+                                    <Link to="/contact" className="text-light text-decoration-none" onClick={handleLinkClick}>Contact</Link>
                                 </li>
                             </ul>
                         </motion.div>
