@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaExternalLinkAlt, FaGithub, FaEye } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const Portfolio: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState('all');
@@ -275,30 +275,17 @@ const Portfolio: React.FC = () => {
                                                         e.currentTarget.style.opacity = '0';
                                                     }}
                                                 >
-                                                    <div className="d-flex gap-3">
+                                                    <div className="text-center">
                                                         <motion.a
                                                             href={project.liveUrl}
-                                                            className="btn btn-primary btn-sm"
+                                                            className="btn btn-primary btn-lg px-4"
                                                             whileHover={{ scale: 1.1 }}
                                                             whileTap={{ scale: 0.9 }}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
                                                         >
-                                                            <FaEye />
-                                                        </motion.a>
-                                                        <motion.a
-                                                            href={project.githubUrl}
-                                                            className="btn btn-outline-primary btn-sm"
-                                                            whileHover={{ scale: 1.1 }}
-                                                            whileTap={{ scale: 0.9 }}
-                                                        >
-                                                            <FaGithub />
-                                                        </motion.a>
-                                                        <motion.a
-                                                            href={project.liveUrl}
-                                                            className="btn btn-secondary btn-sm"
-                                                            whileHover={{ scale: 1.1 }}
-                                                            whileTap={{ scale: 0.9 }}
-                                                        >
-                                                            <FaExternalLinkAlt />
+                                                            <FaExternalLinkAlt className="me-2" />
+                                                            View Project
                                                         </motion.a>
                                                     </div>
                                                 </div>
@@ -321,18 +308,15 @@ const Portfolio: React.FC = () => {
                                                         </span>
                                                     ))}
                                                 </div>
-                                                <div className="d-flex gap-2">
+                                                <div className="text-center">
                                                     <a
                                                         href={project.liveUrl}
-                                                        className="btn btn-primary btn-sm flex-fill"
+                                                        className="btn btn-primary px-4 py-2"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
                                                     >
-                                                        View Live
-                                                    </a>
-                                                    <a
-                                                        href={project.githubUrl}
-                                                        className="btn btn-outline-primary btn-sm flex-fill"
-                                                    >
-                                                        View Code
+                                                        <FaExternalLinkAlt className="me-2" />
+                                                        View Project
                                                     </a>
                                                 </div>
                                             </div>
