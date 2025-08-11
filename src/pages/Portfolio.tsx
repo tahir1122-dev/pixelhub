@@ -1,10 +1,33 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Nav, Modal } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaPlay, FaImage } from 'react-icons/fa';
 
 const Portfolio: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState('all');
+    const [showModal, setShowModal] = useState(false);
+    const [selectedProject, setSelectedProject] = useState<any>(null);
+
+    // Function to handle project viewing
+    const handleViewProject = (project: any) => {
+        // If it's a YouTube video, open in new tab
+        if (project.liveUrl && project.liveUrl.includes('youtube')) {
+            window.open(project.liveUrl, '_blank');
+        }
+        // If it's an image project or has no external link, show in modal
+        else {
+            setSelectedProject(project);
+            setShowModal(true);
+        }
+    };
+
+    // Function to get project type
+    const getProjectType = (project: any) => {
+        if (project.liveUrl && project.liveUrl.includes('youtube')) {
+            return 'video';
+        }
+        return 'image';
+    };
 
     const categories = [
         { id: 'all', name: 'All Projects' },
@@ -22,7 +45,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
             description: 'Modern corporate website with advanced animations and responsive design.',
             technologies: ['React', 'TypeScript', 'Framer Motion'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
         {
@@ -32,7 +55,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
             description: 'Full-featured online fashion store with payment integration and inventory management.',
             technologies: ['Shopify', 'Liquid', 'JavaScript'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
         {
@@ -42,7 +65,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop',
             description: 'Complete brand identity design including logo, menu design, and marketing materials.',
             technologies: ['Adobe Illustrator', 'Photoshop', 'InDesign'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
         {
@@ -102,7 +125,7 @@ const Portfolio: React.FC = () => {
             image: '/images/thumbnail 6.jpg',
             description: 'Trendy thumbnail design for social media campaign with modern aesthetics.',
             technologies: ['Photoshop', 'Illustrator', 'Figma'],
-            liveUrl: '#',
+            liveUrl: '/images/thumbnail 6.jpg',
             githubUrl: '#',
         },
         {
@@ -112,7 +135,7 @@ const Portfolio: React.FC = () => {
             image: '/images/thumbnail 7.jpg',
             description: 'Cinematic thumbnail design for documentary-style video with dramatic lighting.',
             technologies: ['Photoshop', 'Lightroom', 'After Effects'],
-            liveUrl: '#',
+            liveUrl: '/images/thumbnail 7.jpg',
             githubUrl: '#',
         },
         {
@@ -122,7 +145,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
             description: 'Viral social media campaign that increased engagement by 300%.',
             technologies: ['Facebook Ads', 'Instagram', 'Analytics'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
         {
@@ -132,7 +155,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
             description: 'Complex financial dashboard with real-time data visualization.',
             technologies: ['React', 'D3.js', 'Node.js'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
         {
@@ -142,7 +165,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop',
             description: 'High-end jewelry e-commerce site with virtual try-on features.',
             technologies: ['WooCommerce', 'WordPress', 'Custom Plugins'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
         {
@@ -152,7 +175,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
             description: 'Mobile app design for fitness tracking with intuitive user interface.',
             technologies: ['Figma', 'Principle', 'Sketch'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
         {
@@ -162,7 +185,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
             description: 'Comprehensive lead generation campaign for B2B software company.',
             technologies: ['Google Ads', 'LinkedIn', 'HubSpot'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
         {
@@ -172,7 +195,7 @@ const Portfolio: React.FC = () => {
             image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
             description: 'Property listing platform with advanced search and filtering capabilities.',
             technologies: ['Next.js', 'PostgreSQL', 'Mapbox'],
-            liveUrl: '#',
+            liveUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop',
             githubUrl: '#',
         },
     ];
@@ -276,17 +299,24 @@ const Portfolio: React.FC = () => {
                                                     }}
                                                 >
                                                     <div className="text-center">
-                                                        <motion.a
-                                                            href={project.liveUrl}
+                                                        <motion.button
                                                             className="btn btn-primary btn-lg px-4"
                                                             whileHover={{ scale: 1.1 }}
                                                             whileTap={{ scale: 0.9 }}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
+                                                            onClick={() => handleViewProject(project)}
                                                         >
-                                                            <FaExternalLinkAlt className="me-2" />
-                                                            View Project
-                                                        </motion.a>
+                                                            {getProjectType(project) === 'video' ? (
+                                                                <>
+                                                                    <FaPlay className="me-2" />
+                                                                    Watch Video
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <FaImage className="me-2" />
+                                                                    View Project
+                                                                </>
+                                                            )}
+                                                        </motion.button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -309,15 +339,22 @@ const Portfolio: React.FC = () => {
                                                     ))}
                                                 </div>
                                                 <div className="text-center">
-                                                    <a
-                                                        href={project.liveUrl}
+                                                    <button
                                                         className="btn btn-primary px-4 py-2"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
+                                                        onClick={() => handleViewProject(project)}
                                                     >
-                                                        <FaExternalLinkAlt className="me-2" />
-                                                        View Project
-                                                    </a>
+                                                        {getProjectType(project) === 'video' ? (
+                                                            <>
+                                                                <FaPlay className="me-2" />
+                                                                Watch Video
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <FaImage className="me-2" />
+                                                                View Project
+                                                            </>
+                                                        )}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </motion.div>
@@ -398,6 +435,45 @@ const Portfolio: React.FC = () => {
                     </motion.div>
                 </Container>
             </section>
+
+            {/* Image Modal */}
+            <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" centered>
+                <Modal.Header closeButton style={{ background: 'var(--dark-bg)', borderBottom: '1px solid rgba(255, 215, 0, 0.3)' }}>
+                    <Modal.Title className="text-primary">
+                        {selectedProject?.title}
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body style={{ background: 'var(--dark-bg)', padding: 0 }}>
+                    {selectedProject && (
+                        <div className="text-center">
+                            <img
+                                src={selectedProject.liveUrl}
+                                alt={selectedProject.title}
+                                className="img-fluid w-100"
+                                style={{ maxHeight: '70vh', objectFit: 'contain' }}
+                            />
+                            <div className="p-4">
+                                <p className="text-light mb-3">{selectedProject.description}</p>
+                                <div className="d-flex flex-wrap gap-2 justify-content-center">
+                                    {selectedProject.technologies.map((tech: string, index: number) => (
+                                        <span
+                                            key={index}
+                                            className="badge"
+                                            style={{
+                                                background: 'rgba(255, 215, 0, 0.2)',
+                                                color: 'var(--primary-color)',
+                                                border: '1px solid rgba(255, 215, 0, 0.3)',
+                                            }}
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </Modal.Body>
+            </Modal>
         </>
     );
 };
