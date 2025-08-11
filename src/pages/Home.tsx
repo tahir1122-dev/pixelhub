@@ -278,6 +278,93 @@ const Home: React.FC = () => {
                     </Row>
                 </Container>
             </section>
+
+            {/* Video Editing Projects Section */}
+            <section className="section">
+                <Container>
+                    <div className="section-title text-center">
+                        <h2>Our <span className="text-primary">Video Editing</span> Projects</h2>
+                        <p>Showcasing our professional video editing work and creative storytelling</p>
+                    </div>
+                    <Row className="g-4">
+                        {[
+                            { id: 1, image: '/images/thumbnail 1.jpg', title: 'Corporate Presentation', category: 'Business' },
+                            { id: 2, image: '/images/thumbnail 2.jpg', title: 'Product Showcase', category: 'Commercial' },
+                            { id: 3, image: '/images/thumb nail 3.jpg', title: 'Event Highlights', category: 'Event' },
+                            { id: 4, image: '/images/thumbnail 4.jpg', title: 'Brand Story', category: 'Branding' },
+                            { id: 5, image: '/images/thumbnail 5.jpg', title: 'Educational Content', category: 'Educational' },
+                            { id: 6, image: '/images/thumbnail 6.jpg', title: 'Social Media Campaign', category: 'Social Media' },
+                            { id: 7, image: '/images/thumbnail 7.jpg', title: 'Documentary Style', category: 'Documentary' },
+                        ].map((project, index) => (
+                            <Col lg={4} md={6} key={project.id} className="mb-4">
+                                <motion.div
+                                    className="position-relative overflow-hidden rounded-3 shadow-lg"
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    whileHover={{ scale: 1.05 }}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    <div className="position-relative">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-100"
+                                            style={{
+                                                height: '250px',
+                                                objectFit: 'cover',
+                                                transition: 'transform 0.3s ease'
+                                            }}
+                                        />
+                                        <div
+                                            className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+                                            style={{
+                                                background: 'rgba(0, 0, 0, 0.7)',
+                                                opacity: 0,
+                                                transition: 'opacity 0.3s ease'
+                                            }}
+                                            onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                                            onMouseLeave={(e) => e.currentTarget.style.opacity = '0'}
+                                        >
+                                            <div className="text-center text-white">
+                                                <motion.div
+                                                    whileHover={{ scale: 1.2 }}
+                                                    className="mb-3"
+                                                    style={{
+                                                        width: '60px',
+                                                        height: '60px',
+                                                        background: 'rgba(255, 215, 0, 0.9)',
+                                                        borderRadius: '50%',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        margin: '0 auto',
+                                                        cursor: 'pointer'
+                                                    }}
+                                                >
+                                                    <span style={{ fontSize: '24px' }}>▶</span>
+                                                </motion.div>
+                                                <h5 className="fw-bold">{project.title}</h5>
+                                                <span className="badge bg-primary">{project.category}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </Col>
+                        ))}
+                    </Row>
+                    <div className="text-center mt-5">
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <Link to="/portfolio" className="btn btn-primary btn-lg px-5 py-3">
+                                View Full Portfolio <FaArrowRight className="ms-2" />
+                            </Link>
+                        </motion.div>
+                    </div>
+                </Container>
+            </section>
         </>
     );
 };
