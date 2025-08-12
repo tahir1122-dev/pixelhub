@@ -28,6 +28,7 @@ const Portfolio: React.FC = () => {
         { id: 'all', name: 'All Projects' },
         { id: 'web', name: 'Web Development' },
         { id: 'ecommerce', name: 'E-Commerce' },
+        { id: 'video', name: 'Video Editing' },
         { id: 'design', name: 'Design' },
         { id: 'marketing', name: 'Marketing' },
     ];
@@ -69,7 +70,7 @@ const Portfolio: React.FC = () => {
         {
             id: 10,
             title: 'Cholesterol Reduction Tips',
-            category: 'design',
+            category: 'video',
             type: 'video',
             image: '/images/thumbnail 1.jpg',
             description: 'Top 5 foods to reduce cholesterol in Body naturally - Educational health video editing.',
@@ -80,7 +81,7 @@ const Portfolio: React.FC = () => {
         {
             id: 11,
             title: 'Headaches Treatment Guide',
-            category: 'design',
+            category: 'video',
             type: 'video',
             image: '/images/thumbnail 2.jpg',
             description: 'Headaches and Treatment - Medical educational content with professional editing.',
@@ -91,7 +92,7 @@ const Portfolio: React.FC = () => {
         {
             id: 12,
             title: 'Make Money Online Strategy',
-            category: 'design',
+            category: 'video',
             type: 'video',
             image: '/images/thumb nail 3.jpg',
             description: 'Amazon FBA training and business optimization strategies - Professional business content.',
@@ -102,7 +103,7 @@ const Portfolio: React.FC = () => {
         {
             id: 13,
             title: 'E-commerce Business Guide',
-            category: 'design',
+            category: 'video',
             type: 'video',
             image: '/images/thumbnail 4.jpg',
             description: 'Amazon FBA training and e-commerce startup guide - Step-by-step business tutorial.',
@@ -113,7 +114,7 @@ const Portfolio: React.FC = () => {
         {
             id: 14,
             title: 'Product Hunting Strategies',
-            category: 'design',
+            category: 'video',
             type: 'video',
             image: '/images/thumbnail 5.jpg',
             description: 'How to hunt product for online selling - E-commerce product research and optimization.',
@@ -141,6 +142,85 @@ const Portfolio: React.FC = () => {
             description: 'Cinematic thumbnail design for documentary-style video with dramatic lighting.',
             technologies: ['Photoshop', 'Lightroom', 'After Effects'],
             liveUrl: '/images/thumbnail 7.jpg',
+            githubUrl: '#',
+        },
+        // Added: Move previous video thumbnails into Design as standalone image projects
+        {
+            id: 19,
+            title: 'Health Tips Thumbnail',
+            category: 'design',
+            type: 'image',
+            image: '/images/thumbnail 1.jpg',
+            description: 'YouTube thumbnail design focused on wellness and health education.',
+            technologies: ['Photoshop', 'Illustrator'],
+            liveUrl: '/images/thumbnail 1.jpg',
+            githubUrl: '#',
+        },
+        {
+            id: 20,
+            title: 'Medical Guide Thumbnail',
+            category: 'design',
+            type: 'image',
+            image: '/images/thumbnail 2.jpg',
+            description: 'Clean and bold thumbnail for medical educational content.',
+            technologies: ['Photoshop', 'Typography'],
+            liveUrl: '/images/thumbnail 2.jpg',
+            githubUrl: '#',
+        },
+        {
+            id: 21,
+            title: 'Make Money Online Thumbnail',
+            category: 'design',
+            type: 'image',
+            image: '/images/thumb nail 3.jpg',
+            description: 'High-contrast business thumbnail optimized for click-through rate.',
+            technologies: ['Photoshop', 'Color Theory'],
+            liveUrl: '/images/thumb nail 3.jpg',
+            githubUrl: '#',
+        },
+        {
+            id: 22,
+            title: 'E-commerce Guide Thumbnail',
+            category: 'design',
+            type: 'image',
+            image: '/images/thumbnail 4.jpg',
+            description: 'Clear visual hierarchy and branding for e-commerce tutorial content.',
+            technologies: ['Photoshop', 'Branding'],
+            liveUrl: '/images/thumbnail 4.jpg',
+            githubUrl: '#',
+        },
+        {
+            id: 23,
+            title: 'Product Hunting Thumbnail',
+            category: 'design',
+            type: 'image',
+            image: '/images/thumbnail 5.jpg',
+            description: 'Dynamic layout and color accents for product hunting content.',
+            technologies: ['Photoshop', 'Layout'],
+            liveUrl: '/images/thumbnail 5.jpg',
+            githubUrl: '#',
+        },
+        {
+            id: 17,
+            title: 'Promo Reel 1',
+            category: 'video',
+            type: 'video',
+            // No thumbnail: show inline MP4 preview
+            image: '',
+            description: 'Short promotional reel showcasing dynamic cuts and transitions.',
+            technologies: ['Premiere Pro', 'After Effects'],
+            liveUrl: '/video 1 .mp4',
+            githubUrl: '#',
+        },
+        {
+            id: 18,
+            title: 'Promo Reel 2',
+            category: 'video',
+            type: 'video',
+            image: '',
+            description: 'High-energy edit with speed ramping and rhythmic pacing.',
+            technologies: ['Premiere Pro', 'Color Grading'],
+            liveUrl: '/video 2.mp4',
             githubUrl: '#',
         },
         {
@@ -291,12 +371,38 @@ const Portfolio: React.FC = () => {
                                             }}
                                         >
                                             <div className="position-relative overflow-hidden">
-                                                <img
-                                                    src={project.image}
-                                                    alt={project.title}
-                                                    className="card-img-top"
-                                                    style={{ height: '250px', objectFit: 'cover' }}
-                                                />
+                                                {getProjectType(project) === 'video' ? (
+                                                    // For MP4s, show inline video preview; for external (YouTube), show a clean placeholder with play icon
+                                                    (project.liveUrl && project.liveUrl.toLowerCase().endsWith('.mp4')) ? (
+                                                        <video
+                                                            src={project.liveUrl}
+                                                            className="w-100"
+                                                            style={{ height: '250px', objectFit: 'cover' }}
+                                                            muted
+                                                            playsInline
+                                                            loop
+                                                            onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
+                                                            onMouseLeave={(e) => (e.currentTarget as HTMLVideoElement).pause()}
+                                                        />
+                                                    ) : (
+                                                        <div
+                                                            className="w-100 d-flex align-items-center justify-content-center"
+                                                            style={{ height: '250px', background: 'rgba(0,0,0,0.6)' }}
+                                                        >
+                                                            <div className="text-center text-light">
+                                                                <FaPlay className="mb-2" style={{ fontSize: '2rem', color: 'var(--primary-color)' }} />
+                                                                <div style={{ opacity: 0.85 }}>{project.title}</div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                ) : (
+                                                    <img
+                                                        src={project.image}
+                                                        alt={project.title}
+                                                        className="card-img-top"
+                                                        style={{ height: '250px', objectFit: 'cover' }}
+                                                    />
+                                                )}
                                                 <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center opacity-0 transition-all"
                                                     style={{
                                                         background: 'rgba(0, 0, 0, 0.8)',
