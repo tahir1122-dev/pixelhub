@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Nav, Modal } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaExternalLinkAlt, FaPlay, FaImage } from 'react-icons/fa';
+import { FaPlay, FaImage, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Portfolio: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState('all');
@@ -10,23 +10,18 @@ const Portfolio: React.FC = () => {
 
     // Function to handle project viewing
     const handleViewProject = (project: any) => {
-        // If it's a YouTube video, open in new tab
-        if (project.liveUrl && project.liveUrl.includes('youtube')) {
+        // If it's a video project, open YouTube in new tab
+        if (project.type === 'video') {
             window.open(project.liveUrl, '_blank');
         }
-        // If it's an image project or has no external link, show in modal
+        // If it's an image project, show in modal
         else {
             setSelectedProject(project);
             setShowModal(true);
         }
-    };
-
-    // Function to get project type
+    };    // Function to get project type
     const getProjectType = (project: any) => {
-        if (project.liveUrl && project.liveUrl.includes('youtube')) {
-            return 'video';
-        }
-        return 'image';
+        return project.type || 'image';
     };
 
     const categories = [
@@ -42,6 +37,7 @@ const Portfolio: React.FC = () => {
             id: 1,
             title: 'TechCorp Website',
             category: 'web',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
             description: 'Modern corporate website with advanced animations and responsive design.',
             technologies: ['React', 'TypeScript', 'Framer Motion'],
@@ -52,6 +48,7 @@ const Portfolio: React.FC = () => {
             id: 2,
             title: 'FashionStore E-Commerce',
             category: 'ecommerce',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
             description: 'Full-featured online fashion store with payment integration and inventory management.',
             technologies: ['Shopify', 'Liquid', 'JavaScript'],
@@ -62,6 +59,7 @@ const Portfolio: React.FC = () => {
             id: 3,
             title: 'Restaurant Brand Identity',
             category: 'design',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop',
             description: 'Complete brand identity design including logo, menu design, and marketing materials.',
             technologies: ['Adobe Illustrator', 'Photoshop', 'InDesign'],
@@ -72,6 +70,7 @@ const Portfolio: React.FC = () => {
             id: 10,
             title: 'Cholesterol Reduction Tips',
             category: 'design',
+            type: 'video',
             image: '/images/thumbnail 1.jpg',
             description: 'Top 5 foods to reduce cholesterol in Body naturally - Educational health video editing.',
             technologies: ['Premiere Pro', 'After Effects', 'Photoshop'],
@@ -82,6 +81,7 @@ const Portfolio: React.FC = () => {
             id: 11,
             title: 'Headaches Treatment Guide',
             category: 'design',
+            type: 'video',
             image: '/images/thumbnail 2.jpg',
             description: 'Headaches and Treatment - Medical educational content with professional editing.',
             technologies: ['Premiere Pro', 'Illustrator', 'After Effects'],
@@ -92,6 +92,7 @@ const Portfolio: React.FC = () => {
             id: 12,
             title: 'Make Money Online Strategy',
             category: 'design',
+            type: 'video',
             image: '/images/thumb nail 3.jpg',
             description: 'Amazon FBA training and business optimization strategies - Professional business content.',
             technologies: ['Premiere Pro', 'Motion Graphics', 'Photoshop'],
@@ -102,26 +103,29 @@ const Portfolio: React.FC = () => {
             id: 13,
             title: 'E-commerce Business Guide',
             category: 'design',
+            type: 'video',
             image: '/images/thumbnail 4.jpg',
             description: 'Amazon FBA training and e-commerce startup guide - Step-by-step business tutorial.',
             technologies: ['Premiere Pro', 'After Effects', 'Illustrator'],
-            liveUrl: 'https://youtube.com/shorts/nyCGgCcfsJM?si=7CfdSyAl7IHg8X5z',
+            liveUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
             githubUrl: '#',
         },
         {
             id: 14,
             title: 'Product Hunting Strategies',
             category: 'design',
+            type: 'video',
             image: '/images/thumbnail 5.jpg',
             description: 'How to hunt product for online selling - E-commerce product research and optimization.',
             technologies: ['Premiere Pro', 'Motion Graphics', 'Photoshop'],
-            liveUrl: 'https://youtube.com/4oWBa0nsROA?si=3QWyLJF-RonUT8m7',
+            liveUrl: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
             githubUrl: '#',
         },
         {
             id: 15,
             title: 'Social Media Campaign Visual',
             category: 'design',
+            type: 'image',
             image: '/images/thumbnail 6.jpg',
             description: 'Trendy thumbnail design for social media campaign with modern aesthetics.',
             technologies: ['Photoshop', 'Illustrator', 'Figma'],
@@ -132,6 +136,7 @@ const Portfolio: React.FC = () => {
             id: 16,
             title: 'Documentary Style Thumbnail',
             category: 'design',
+            type: 'image',
             image: '/images/thumbnail 7.jpg',
             description: 'Cinematic thumbnail design for documentary-style video with dramatic lighting.',
             technologies: ['Photoshop', 'Lightroom', 'After Effects'],
@@ -142,6 +147,7 @@ const Portfolio: React.FC = () => {
             id: 4,
             title: 'Social Media Campaign',
             category: 'marketing',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
             description: 'Viral social media campaign that increased engagement by 300%.',
             technologies: ['Facebook Ads', 'Instagram', 'Analytics'],
@@ -152,6 +158,7 @@ const Portfolio: React.FC = () => {
             id: 5,
             title: 'FinTech Dashboard',
             category: 'web',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
             description: 'Complex financial dashboard with real-time data visualization.',
             technologies: ['React', 'D3.js', 'Node.js'],
@@ -162,6 +169,7 @@ const Portfolio: React.FC = () => {
             id: 6,
             title: 'Luxury Jewelry Store',
             category: 'ecommerce',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop',
             description: 'High-end jewelry e-commerce site with virtual try-on features.',
             technologies: ['WooCommerce', 'WordPress', 'Custom Plugins'],
@@ -172,6 +180,7 @@ const Portfolio: React.FC = () => {
             id: 7,
             title: 'Fitness App UI/UX',
             category: 'design',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
             description: 'Mobile app design for fitness tracking with intuitive user interface.',
             technologies: ['Figma', 'Principle', 'Sketch'],
@@ -182,6 +191,7 @@ const Portfolio: React.FC = () => {
             id: 8,
             title: 'B2B Lead Generation',
             category: 'marketing',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
             description: 'Comprehensive lead generation campaign for B2B software company.',
             technologies: ['Google Ads', 'LinkedIn', 'HubSpot'],
@@ -192,6 +202,7 @@ const Portfolio: React.FC = () => {
             id: 9,
             title: 'Real Estate Platform',
             category: 'web',
+            type: 'image',
             image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
             description: 'Property listing platform with advanced search and filtering capabilities.',
             technologies: ['Next.js', 'PostgreSQL', 'Mapbox'],
@@ -375,6 +386,47 @@ const Portfolio: React.FC = () => {
                             <p className="text-light">Try selecting a different filter.</p>
                         </motion.div>
                     )}
+                </Container>
+            </section>
+
+            {/* More Projects Link Section */}
+            <section className="section" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
+                <Container>
+                    <motion.div
+                        className="text-center"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="card bg-dark border-primary p-4">
+                            <div className="card-body">
+                                <h4 className="text-primary mb-3">
+                                    <FaExternalLinkAlt className="me-2" />
+                                    Want to See More Projects?
+                                </h4>
+                                <p className="text-light mb-4">
+                                    Explore our complete portfolio with detailed case studies, client testimonials,
+                                    and behind-the-scenes insights into our creative process.
+                                </p>
+                                <motion.a
+                                    href="https://www.notion.so/intervideoeditor/Umara-Munir-Portfolio-21bb8e56b7c7802f9d82e9130b9b4101"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn btn-primary btn-lg px-5 py-3"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <FaExternalLinkAlt className="me-2" />
+                                    For More Details Visit Full Portfolio
+                                </motion.a>
+                                <div className="mt-3">
+                                    <small className="text-light">
+                                        📚 Complete project documentation • 🎨 Design process insights • 📈 Results & analytics
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
                 </Container>
             </section>
 
